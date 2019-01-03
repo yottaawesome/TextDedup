@@ -26,7 +26,7 @@ Invoke from the command prompt.
     * _Optional; defaults to ';'._ 
     * The destination file to receive the deduplicated text.
 
-_Example:_ `TextDedup.Console.exe /source:test.txt /dest:deduped-test.txt /delim:||` 
+_Example:_ `txtddp /source:test.txt /dest:deduped-test.txt /delim:||` 
 
 ## Stuff left to be done?
 More unit tests. More testing in general.
