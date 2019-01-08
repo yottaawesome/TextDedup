@@ -30,4 +30,4 @@ Invoke from the command prompt.
 _Example:_ `tddp /src:test.txt /dst:deduped-test.txt /del:||` 
 
 ## Stuff left to be done?
-More unit tests. More testing in general. Also, a C++ version, because the C# .NET core version is a 60+MB monstrosity.
+More unit tests. More testing in general. Also, a C++ version, because the C# .NET core version is a 60+MB monstrosity. IsN't .NeT tEh AwSuUmz?
