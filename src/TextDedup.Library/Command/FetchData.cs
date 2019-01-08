@@ -1,54 +1,41 @@
 ﻿using System;
 using System.IO;
 using TextDedup.Library.Dto;
-using TextDedup.Library.Interface;
+using TextDedup.Library.Error;
 
 namespace TextDedup.Library.Command
 {
+    /// <summary>
+    /// Fetches the string data to be deduplicated.
+    /// </summary>
     class FetchData
     {
         protected readonly Args _args;
-        protected readonly ILogger _logger;
-        public enum StatusEnum
-        {
-            Success,
-            NotYetRun,
-            FileNotFound,
-            Failed
-        }
-        public StatusEnum Status { get; protected set; }
 
-        public FetchData(Args args, ILogger logger)
+        /// <summary>
+        /// All commands are required for this constructor, and must not be null.
+        /// </summary>
+        /// <param name="args">Required.</param>
+        public FetchData(Args args)
         {
-            _args = args ?? throw new ArgumentNullException("Args cannot be null");
-            _logger = logger;
-            Status = StatusEnum.NotYetRun;
+            _args = args ?? throw new CommandException("Args cannot be null");
         }
 
+        /// <summary>
+        /// Executes this command object.
+        /// </summary>
+        /// <returns>The string data read from the file</returns>
+        /// <exception cref="TextDedup.Library.Error.CommandException">When an exception occurs, it will be wrapped by this exception type and thrown.</exception>
         public string Execute()
         {
             try
             {
                 string concat = string.Concat(File.ReadAllLines(_args.FilePath));
-                Status = StatusEnum.Success;
                 return concat;
             }
-            catch (DirectoryNotFoundException)
+            catch(Exception ex)
             {
-                _logger?.Write($"A directory in the path {_args.FilePath} was not found.");
-                Status = StatusEnum.FileNotFound;
-                return null;
-            }
-            catch (FileNotFoundException)
-            {
-                _logger?.Write($"The file or path {_args.FilePath} was not found.");
-                Status = StatusEnum.FileNotFound;
-                return null;
-            }
-            catch(Exception)
-            {
-                Status = StatusEnum.Failed;
-                throw;
+                throw new CommandException(ex);
             }
         }
     }

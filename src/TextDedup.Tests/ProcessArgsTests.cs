@@ -12,11 +12,8 @@ namespace Tests
         [Test]
         public void NullAndEmptyArgs()
         {
-            ProcessArgs processArgs1 = new ProcessArgs(null, null);
-            ProcessArgs processArgs2 = new ProcessArgs(new string[] { "blah" }, null);
-
-            Assert.IsTrue(processArgs1.Execute() == null && processArgs1.Status == ProcessArgs.StatusEnum.NoArgsFound);
-            Assert.IsTrue(processArgs2.Execute() == null && processArgs2.Status == ProcessArgs.StatusEnum.NoFileArgFound);
+            Assert.IsNull(new ProcessArgs(null).Execute());
+            Assert.IsNull(new ProcessArgs(new string[] { "blah" }).Execute());
         }
 
         [Test]
@@ -25,10 +22,10 @@ namespace Tests
             string filePath = ProcessArgs.FileSwitch + "Test.txt";
             string delim = ProcessArgs.DelimSwitch + "||";
 
-            ProcessArgs processArgs = new ProcessArgs(new string[2] { filePath, delim }, null);
+            ProcessArgs processArgs = new ProcessArgs(new string[2] { filePath, delim });
             Args args = processArgs.Execute();
 
-            Assert.IsTrue(args != null && args.FilePath != null && args.Delimiter == "||" && processArgs.Status == ProcessArgs.StatusEnum.Success);
+            Assert.IsTrue(args != null && args.FilePath != null && args.Delimiter == "||");
         }
     }
 }

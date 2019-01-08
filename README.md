@@ -16,17 +16,18 @@ From a command prompt, `cd` into `src` and run the following: `dotnet publish -c
 ## Switches
 Invoke from the command prompt.
 
-* `/source:` 
+* `/src:` 
     * _Required._ 
     * The file that contains the data to be deduplicated.
-* `/dest:`
+* `/dst:`
     * _Optional; defaults to_ _**\<filename\> [deduped].\<extension\>**._ 
-    * The file that contains the data to be deduplicated.
-* `/delim:`
+	* The destination file to receive the deduplicated text.
+* `/del:`
     * _Optional; defaults to ';'._ 
-    * The destination file to receive the deduplicated text.
+	* The file that contains the data to be deduplicated.
+    
 
-_Example:_ `txtddp /source:test.txt /dest:deduped-test.txt /delim:||` 
+_Example:_ `tddp /src:test.txt /dst:deduped-test.txt /del:||` 
 
 ## Stuff left to be done?
-More unit tests. More testing in general.
+More unit tests. More testing in general. Also, a C++ version, because the C# .NET core version is a 60+MB monstrosity.

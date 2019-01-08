@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using TextDedup.Library.Command;
+using Commands = TextDedup.Library.Command;
 
 namespace Tests
 {
@@ -14,7 +14,7 @@ namespace Tests
             string str = "one;";
             string delim = ";";
 
-            DedupString dds = new DedupString(str, delim);
+            var dds = new Commands.DedupString(str, delim);
             Assert.IsTrue(dds.Execute() == "one");
         }
 
@@ -24,7 +24,7 @@ namespace Tests
             string str = "one;one";
             string delim = ";";
 
-            DedupString dds = new DedupString(str, delim);
+            var dds = new Commands.DedupString(str, delim);
             Assert.IsTrue(dds.Execute() == "one");
         }
 
@@ -34,7 +34,7 @@ namespace Tests
             string str = "one;two;one";
             string delim = ";";
 
-            DedupString dds = new DedupString(str, delim);
+            var dds = new Commands.DedupString(str, delim);
             Assert.IsTrue(dds.Execute() == "one;two");
         }
     }
