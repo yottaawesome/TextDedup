@@ -24,7 +24,7 @@ Invoke from the command prompt.
 	* The destination file to receive the deduplicated text.
 * `/del:`
     * _Optional; defaults to ';'._ 
-	* The file that contains the data to be deduplicated.
+	* The delimiter to use.
     
 
 _Example:_ `tddp /src:test.txt /dst:deduped-test.txt /del:||` 
