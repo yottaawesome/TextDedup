@@ -25,7 +25,7 @@ namespace TextDedup.Library.Command
         /// Executes this command object.
         /// </summary>
         /// <exception cref="TextDedup.Library.Error.CommandException">When an exception occurs, it will be wrapped by this exception type and thrown.</exception>
-        /// <returns>Null if args is empty or null, or no file switch was specified.</returns>
+        /// <returns>The parsed args as an Args object, or null if args is empty, null, or no file switch was specified.</returns>
         public Args Execute()
         {
             try
