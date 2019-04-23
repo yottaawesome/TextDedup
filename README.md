@@ -10,6 +10,9 @@ TextDedup was designed to assist with quickly deduplicating a body of text in a 
 
 Obviously, a complete utility would update the PATH automatically (this involves updating the registry), but this was intended as a quick scratch of an annoying itch, and deduplicating file text might be useful beyond just the use case I've presented. A more complete utility will follow at a later date.
 
+## Status
+__Maintenance.__
+
 ## Publishing
 From a command prompt, `cd` into `src` and run the following: `dotnet publish -c Release -r win10-x64`.
 
